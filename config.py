@@ -5,7 +5,7 @@ load_dotenv("film.env")
 
 filmyfly = os.getenv("filmyfly")
 if not filmyfly:
-    raise ValueError("Environment variable 'filmyfly' not found!")
+    filmyfly = input("Enter Link To scrape")
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
