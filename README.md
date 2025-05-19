@@ -40,8 +40,8 @@ python main.py
 - [ ] Add pagination and multiple-page scraping
 - [ ] Enhanced error handling and logging
 - [ ] Proxy/user-agent rotation for stealth scraping
-- [×] Admin panel or frontend integration (Flask or PHP)
-- [×] Schedule scraping tasks (cronjobs or Windows tasks)
+- [ ] Admin panel or frontend integration (Flask or PHP)
+- [ ] Schedule scraping tasks (cronjobs or Windows tasks)
 
 ---
 
