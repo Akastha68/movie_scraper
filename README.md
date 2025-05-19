@@ -7,19 +7,21 @@ python main.py
 
 ---
 
-## ðŸ—ƒï¸ Database Schema
+## Database Schema
 
 ### movies
+ ________________________
 | id | title | image_url |
 |----|-------|-----------|
 
 ### movie_links
+ _____________________________________
 | id | movie_id | quality | video_url |
 |----|----------|---------|-----------|
 
 ---
 
-## ðŸ§° Requirements
+## Requirements
 
 - Python 3.10 or newer
 - Modules:
@@ -27,22 +29,23 @@ python main.py
   - beautifulsoup4
   - sqlite3
   - python-dotenv
+  - urllib.parse
 
 (Install via `requirements.txt`)
 
 ---
 
-## ðŸ’¡ Future Enhancements
+## Future Enhancements
 
 - [ ] Add pagination and multiple-page scraping
 - [ ] Enhanced error handling and logging
 - [ ] Proxy/user-agent rotation for stealth scraping
-- [ ] Admin panel or frontend integration (Flask or PHP)
-- [ ] Schedule scraping tasks (cronjobs or Windows tasks)
+- [×] Admin panel or frontend integration (Flask or PHP)
+- [×] Schedule scraping tasks (cronjobs or Windows tasks)
 
 ---
 
-## Â© License
+## License
 
 This project is licensed under the [MIT License](./LICENSE)
 
