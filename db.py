@@ -16,7 +16,7 @@ def setup_tables():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         movie_id INTEGER,
         quality TEXT,
-        video_url TEXT,
+        video_url TEXT UNIQUE,  -- Prevent duplicate video_urls
         FOREIGN KEY(movie_id) REFERENCES movies(id)
     )
     """)
