@@ -1,9 +1,12 @@
+import threading
 import requests
 from bs4 import BeautifulSoup as bs
 from urllib.parse import urljoin
 from config import filmyfly, HEADERS
 from db import insert_movie, insert_video_link
 
+
+db_lock = threading.Lock()
 class Scrape:
     def __init__(self, base_url):
         self.base_url = base_url
@@ -39,8 +42,8 @@ class Scrape:
 
             title_tag = detail_soup.find("title")
             movie_title = title_tag.text.strip() if title_tag else "Unknown Title"
-
-            movie_id = insert_movie(movie_title, image_url)
+            with db_lock:
+                movie_id = insert_movie(movie_title, image_url)
 
             download_tag = detail_soup.find("a", class_="dl")
             if not download_tag:
@@ -64,4 +67,5 @@ class Scrape:
                     new1 = self._get_soup(new1_url)
                     if new1 and new1.a:
                         video_url = new1.a.get("href")
-                        insert_video_link(movie_id, quality, video_url)
+                        with db_lock:
+                             insert_video_link(movie_id, quality, video_url)
