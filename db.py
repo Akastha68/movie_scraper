@@ -33,7 +33,19 @@ def insert_movie(title, image_url):
         conn.commit()
         return cursor.lastrowid
 
+#def insert_video_link(movie_id, quality, video_url):
+#    cursor.execute("INSERT INTO movie_links (movie_id, quality, video_url) VALUES (?, ?, ?)",
+#                   (movie_id, quality, video_url))
+#    conn.commit()
+
 def insert_video_link(movie_id, quality, video_url):
-    cursor.execute("INSERT INTO movie_links (movie_id, quality, video_url) VALUES (?, ?, ?)",
-                   (movie_id, quality, video_url))
-    conn.commit()
+    # Check if video_url already exists
+    cursor.execute("SELECT id FROM movie_links WHERE video_url = ?", (video_url,))
+    existing = cursor.fetchone()
+    if existing:
+        return existing[0]  # Return existing video link's ID (optional)
+    else:
+        cursor.execute("INSERT INTO movie_links (movie_id, quality, video_url) VALUES (?, ?, ?)",
+                       (movie_id, quality, video_url))
+        conn.commit()
+        return cursor.lastrowid  # Return new entry ID (optional)
